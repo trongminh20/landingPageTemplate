@@ -1,4 +1,5 @@
 # Frontend Mentor - Blogr landing page
+# Demo: https://landing-page-template.minhnphan.ca
 
 ![Design preview for the Blogr landing page coding challenge](./design/desktop-preview.jpg)
 
