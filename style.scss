@@ -1,0 +1,515 @@
+/*==================Varaibles =======================*/
+
+$orangeBackground: #FF8C6F;
+$darkOrange:#e68e66;
+$darkBackground: #24242C;
+
+/*==================Mixin =======================*/
+
+@mixin flexDisplay($direction) {
+    display: flex;
+    flex-direction: $direction;
+    @if $direction==row or $direction==column-reverse {
+        column-gap: 20px;
+    }
+    @else if $direction==column or $direction==column-reverse {
+        row-gap: 20px;
+    }
+}
+
+@mixin button () {
+    background-color: white;
+    color: $orangeBackground;
+    font-weight: bold;
+    border: 1px solid white;
+    border-radius: 50px;
+}
+
+@mixin btn-reverse() {
+    background-color: $orangeBackground;
+    border: 1px solid white;
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+@mixin content() {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+@mixin title() {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+/*==================Mobile design =======================*/
+
+@media only screen and (max-width:799px) {
+    #navbar {
+        @include flexDisplay(column);
+        background-color: $orangeBackground;
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        width: 100%;
+        #navbar-div {
+            @include flexDisplay(row);
+            .navbar-brand {
+                background-color: $orangeBackground;
+                a {
+                    color: white;
+                    font-size: 30px;
+                    text-decoration: none;
+                }
+            }
+            #responsive-button {
+                width: 50px;
+                height: 50px;
+                i {
+                    color: white;
+                }
+            }
+            #navbar-menu {
+                display: none;
+                @include flexDisplay(column);
+                width: 100%;
+                background-color: $darkOrange;
+                padding: 10px;
+                li {
+                    list-style: none;
+                    button {
+                        background: none;
+                        border: none;
+                        color: white;
+                    }
+                    .dd-menu {
+                        background-color: white;
+                        @include flexDisplay(column);
+                        align-items: center;
+                        padding-right: 5px;
+                        padding-left: 5px;
+                        li {
+                            width: 100%;
+                            a {
+                                text-decoration: none;
+                                color: $orangeBackground;
+                            }
+                        }
+                        li:hover {
+                            background-color: $orangeBackground;
+                            a {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            #log-btns {
+                @include flexDisplay(row-reverse);
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    #login-btn {
+        @include btn-reverse();
+    }
+    #signup-btn {
+        @include button();
+    }
+    #introduction {
+        width: 100%;
+        height: 50vh;
+        background-color: $orangeBackground;
+        border-bottom-left-radius: 50px;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        margin-top: 10%;
+        #intro-content {
+            @include flexDisplay(column);
+            align-items: center;
+            color: white;
+            row-gap: 10px;
+            z-index: 3;
+        }
+        #btn-trail {
+            @include button();
+        }
+        #btn-more {
+            @include btn-reverse();
+        }
+    }
+    #btn-more {
+        border: 1px solid white;
+        color: white;
+    }
+    //main content
+    #main-content {
+        @include flexDisplay(column);
+    }
+    //design section
+    #design {
+        @include flexDisplay(column);
+        #div-title {
+            margin-top: 20%;
+            margin-bottom: 20%;
+        }
+        #design-content {
+            @include flexDisplay(column-reverse);
+            #design-left-content {
+                @include flexDisplay(column);
+                @include content();
+                h3 {
+                    @include title();
+                }
+            }
+            #design-right-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    //infrastructure
+    #infrastructure {
+        @include flexDisplay(column);
+        background-color: $darkBackground;
+        border-bottom-left-radius: 50px;
+        border-top-right-radius: 75px;
+        width: 100%;
+        height: 75vh;
+        margin-top: 50%;
+        position: relative;
+        #infrastructure-img {
+            background-image: url(images/bg-pattern-circles.svg);
+            background-size: 70%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-position-x: 60%;
+            background-position-y: 70%;
+            height: 50%;
+            padding-bottom: 10px;
+            img {
+                width: 80%;
+                position: absolute;
+                bottom: 50%;
+                left: 20%;
+            }
+        }
+        #infras-content {
+            @include flexDisplay(column);
+            height: 50%;
+            color: white;
+            @include content();
+            h3 {
+                @include title();
+            }
+        }
+    }
+    //platform
+    #platform {
+        #platform-img {}
+        #platform-content {
+            @include flexDisplay(column);
+            @include content();
+            h3 {
+                @include title();
+            }
+        }
+    }
+    //footer
+    footer {
+        background-color: $darkBackground;
+        color: white;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-top: 20%;
+        border-top-right-radius: 50px;
+        #footer-brand h1 {
+            font-size: 60px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        h4 {
+            text-align: center;
+        }
+        #footer-content {
+            @include flexDisplay(column);
+            align-items: center;
+            ul {
+                @include flexDisplay(column);
+                align-items: center;
+                padding: 10px;
+                row-gap: 5px;
+                li {
+                    list-style: none;
+                    a {
+                        text-decoration: none;
+                        color: white;
+                        font-weight: lighter;
+                    }
+                }
+            }
+        }
+    }
+    //atributtion
+    #attribution {
+        background-color: #FF8C6F;
+        color: $darkBackground;
+        display: flex;
+        justify-content: center;
+        a {
+            color: white;
+            text-decoration: none;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+}
+
+
+/*================== Desktop Design =======================*/
+
+@media only screen and (min-width:800px) {
+    body {
+        position: relative;
+    }
+    #navbar {
+        background-color: $orangeBackground;
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        #responsive-button {
+            display: none;
+        }
+        #navbar-div {
+            @include flexDisplay(row);
+            justify-content: space-around;
+            position: relative;
+            .navbar-brand {
+                width: 10%;
+                display: flex;
+                align-items: center;
+                a {
+                    color: white;
+                    font-size: 30px;
+                    font-weight: bolder;
+                    text-decoration: none;
+                }
+            }
+            #navbar-menu {
+                width: 80%;
+                @include flexDisplay(row);
+                margin-top: 20px;
+                li {
+                    list-style: none;
+                    .nav-btn {
+                        background: none;
+                        border: none;
+                        color: white;
+                    }
+                    .dd-menu {
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        @include flexDisplay(column);
+                        background-color: white;
+                        position: absolute;
+                        border: 1px solid $orangeBackground;
+                        li {
+                            width: 100%;
+                            a {
+                                text-align: center;
+                                text-decoration: none;
+                                color: $orangeBackground;
+                            }
+                        }
+                        li:hover {
+                            background-color: $orangeBackground;
+                            a {
+                                color: white;
+                            }
+                        }
+                    }
+                    #log-btn {
+                        position: absolute;
+                        right: 0;
+                        top: 20px;
+                        #login-btn {
+                            @include btn-reverse();
+                        }
+                        #signup-btn {
+                            @include button();
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #introduction {
+        width: 100%;
+        background-color: $orangeBackground;
+        color: white;
+        height: 90vh;
+        padding: 30px;
+        margin-top: 5%;
+        margin-bottom: 10%;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        #intro-content {
+            @include flexDisplay(column);
+            align-items: center;
+            z-index: 2;
+            #btn-trail {
+                @include button();
+            }
+            #btn-more {
+                @include btn-reverse();
+            }
+        }
+    }
+    #main-content {
+        @include flexDisplay(column);
+        padding-bottom: 25%;
+    }
+    #design {
+        @include flexDisplay(column);
+        overflow-x: hidden;
+        &-title {
+            margin-bottom: 100px;
+        }
+        &-content {
+            @include flexDisplay(row);
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            padding-top: 50px;
+        }
+        &-left-content {
+            width: 50%;
+            @include flexDisplay(column);
+            @include content();
+        }
+        &-right-content {
+            img {
+                // link to #design-content
+                position: absolute;
+                width: 60%;
+                right: -20%;
+                top: -20%;
+            }
+        }
+    }
+    #infrastructure {
+        background-color: $darkBackground;
+        color: white;
+        border-top-right-radius: 50px;
+        border-bottom-left-radius: 75px;
+        @include flexDisplay(row);
+        height: 75vh;
+        position: relative;
+        background-image: url(images/bg-pattern-circles.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 75%;
+        background-position-x: -175px;
+        background-position-y: 80%;
+        #infras-content {
+            width: 50%;
+            @include content();
+            @include flexDisplay(column);
+            justify-content: center;
+            align-items: center;
+        }
+        &-img {
+            width: 50%;
+        }
+        #phone {
+            position: absolute;
+            width: 50%;
+            right: 50%;
+            bottom: -100px;
+        }
+    }
+    #platform {
+        margin-top: 25%;
+        margin-bottom: 25%;
+        @include flexDisplay(row-reverse);
+        position: relative;
+        height: 75vh;
+        padding: 30px;
+        &-content {
+            width: 50%;
+            @include flexDisplay(column);
+            @include content();
+        }
+        &-img {
+            img {
+                position: absolute;
+                left: -20%;
+                bottom: -100px;
+                width: 80%;
+            }
+        }
+    }
+    footer {
+        border-top-right-radius: 50px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        height: 75vh;
+        background-color: #24242C;
+        padding: 30px;
+        @include flexDisplay(column);
+        justify-content: center;
+        .footer-item {
+            @include flexDisplay(row);
+        }
+        #footer-brand {
+            width: 25%;
+            h1 {
+                color: white;
+            }
+        }
+        .footer-item-col {
+            width: 30%;
+            @include flexDisplay(column);
+            align-items: center;
+            h4 {
+                color: white;
+            }
+            ul {
+                padding: 5px;
+            }
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+        #sitemap {
+            @include flexDisplay(row);
+            width: 70%;
+        }
+    }
+    #attribution {
+        position: absolute;
+        background-color: $orangeBackground;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+    }
+}
